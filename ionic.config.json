@@ -1,0 +1,7 @@
+{
+  "name": "fbLogin",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
