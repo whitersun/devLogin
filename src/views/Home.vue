@@ -49,7 +49,7 @@ import {
   IonText,
 } from "@ionic/vue";
 // import { Plugins } from "@capacitor/core";
-import { FacebookLogin } from "@rdlabo/capacitor-facebook-login";
+import { FacebookLogin } from "@capacitor-community/facebook-login";
 import { ref } from "@vue/reactivity";
 import { onBeforeMount } from "@vue/runtime-core";
 
@@ -69,42 +69,41 @@ export default {
     const resultToken = ref("");
     const userData = ref("");
 
-    const getCurrentState = async () => {
-      const result = await FacebookLogin.getCurrentAccessToken();
-      try {
-        console.log(result);
-        if (result && result.accessToken) {
-          await getUserInfo();
-          return (resultToken.value = result);
-        }
-      } catch (e) {
-        console.log(e);
+    async function login() {
+      const FACEBOOK_PERMISSIONS = [
+        "email",
+        "user_birthday",
+        "user_photos",
+        "user_gender",
+      ];
+      const result = await FacebookLogin.login({ permissions: FACEBOOK_PERMISSIONS });
+
+      if (result.accessToken) {
+        // Login successful.
+        alert("result: " + result);
+        console.log(`Facebook access token is ${result.accessToken.token}`);
+
+        await getPofiles();
       }
-    };
+    }
+
+    async function getCurrentAccessToken() {
+      const result = await FacebookLogin.getCurrentAccessToken();
+
+      if (result.accessToken) {
+        console.log(`Facebook access token is ${result.accessToken.token}`);
+      }
+    }
+
+    async function getPofiles() {
+      const result = await FacebookLogin.getProfile({ fields: ["email"] });
+      alert(result.email);
+      console.log(`Facebook user's email is ${result.email}`);
+    }
 
     onBeforeMount(async () => {
-      await getCurrentState();
+      await getCurrentAccessToken();
     });
-
-    const getUserInfo = async (event) => {
-      const response = await fetch(
-        `https://graph.facebook.com/${event.accessToken.userId}?fields=id,name,gender,link,picture&type=large&access_token=${event.accessToken.token}`
-      );
-      // const myJson = await response.json();
-      console.log("my data: ", await response.json());
-    };
-
-    const login = async () => {
-      const FACEBOOK_PERMISSIONS = ["public_profile", "email"];
-
-      const result = await FacebookLogin.login({
-        permissions: FACEBOOK_PERMISSIONS,
-      });
-      if (result && result.accessToken) {
-        await getUserInfo(result);
-        return (userData.value = result);
-      }
-    };
 
     return {
       login,

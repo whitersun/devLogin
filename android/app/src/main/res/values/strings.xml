@@ -4,7 +4,8 @@
     <string name="title_activity_main">devLogin</string>
     <string name="package_name">com.login.vue_login</string>
     <string name="custom_url_scheme">com.login.vue_login</string>
+
     <string name="facebook_app_id">996956987795389</string>
-    <string name="fb_login_protocol_scheme">fb996956987795389</string>
+    <string name="facebook_client_token">996956987795389</string>
 
 </resources>

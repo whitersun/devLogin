@@ -1,5 +1,9 @@
 [
 	{
+		"pkg": "@capacitor-community/facebook-login",
+		"classpath": "com.getcapacitor.community.facebooklogin.FacebookLogin"
+	},
+	{
 		"pkg": "@capacitor/app",
 		"classpath": "com.capacitorjs.plugins.app.AppPlugin"
 	},
@@ -14,9 +18,5 @@
 	{
 		"pkg": "@capacitor/status-bar",
 		"classpath": "com.capacitorjs.plugins.statusbar.StatusBarPlugin"
-	},
-	{
-		"pkg": "@rdlabo/capacitor-facebook-login",
-		"classpath": "jp.rdlabo.capacitor.plugin.facebook.FacebookLogin"
 	}
 ]
