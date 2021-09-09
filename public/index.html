@@ -14,7 +14,11 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
 
-    <link rel="shortcut icon" type="image/png" href="<%= BASE_URL %>assets/icon/favicon.png" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="<%= BASE_URL %>assets/icon/favicon.png"
+    />
 
     <!-- add to homescreen for ios -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -24,7 +28,27 @@
 
   <body>
     <div id="app"></div>
+
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId: "996956987795389",
+          cookie: true, // enable cookies to allow the server to access the session
+          xfbml: true, // parse social plugins on this page
+          version: "v5.0", // use graph api current version
+        });
+      };
+
+      // Load the SDK asynchronously
+      (function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+    </script>
   </body>
-
 </html>
-

@@ -1,0 +1,6 @@
+{
+	"appId": "com.login.vue_login",
+	"appName": "devLogin",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}

@@ -1,6 +1,6 @@
 {
-	"appId": "com.fb.login",
-	"appName": "fbLogin",
-	"webDir": "dist",
-	"bundledWebRuntime": false
+  "appId": "com.login.vue_login",
+  "appName": "devLogin",
+  "webDir": "dist",
+  "bundledWebRuntime": false
 }
